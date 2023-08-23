@@ -5,6 +5,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 
 public class Provider {
@@ -13,6 +14,9 @@ public class Provider {
 
     @Value("${rocketmq.producer.port}")
     private String pNamesrvAddrPort;
+
+//    @Autowired
+//    private RocketMQTemplate rocketMQTeplate;
 
     public void service() throws MQClientException, InterruptedException {
         //声明并初始化一个producer
@@ -38,6 +42,7 @@ public class Provider {
                 //调用producer的send()方法发送消息
                 //这里调用的是同步的方式，所以会有返回结果
                 SendResult sendResult = producer.send(msg);
+                producer.
 
                 //打印返回结果，可以看到消息发送的状态以及一些相关信息
                 System.out.println(sendResult);
